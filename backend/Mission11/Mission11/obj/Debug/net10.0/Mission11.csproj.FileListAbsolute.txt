@@ -147,3 +147,4 @@ C:\Users\agswa\OneDrive\Desktop\Mission11_Swartzberg\backend\Mission11\Mission11
 C:\Users\agswa\OneDrive\Desktop\Mission11_Swartzberg\backend\Mission11\Mission11\obj\Debug\net10.0\Mission11.pdb
 C:\Users\agswa\OneDrive\Desktop\Mission11_Swartzberg\backend\Mission11\Mission11\obj\Debug\net10.0\Mission11.genruntimeconfig.cache
 C:\Users\agswa\OneDrive\Desktop\Mission11_Swartzberg\backend\Mission11\Mission11\obj\Debug\net10.0\ref\Mission11.dll
+C:\Users\agswa\OneDrive\Desktop\Mission11_Swartzberg\backend\Mission11\Mission11\obj\Debug\net10.0\Mission11.sourcelink.json

@@ -1,24 +1,30 @@
 import { useEffect, useState } from 'react'
-import type { book } from './types/books'
+import type { book } from '../types/books'
+import { useNavigate } from 'react-router-dom'
 
-function Booklist() {
+function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
     const [books, setBooks] = useState<book[]>([])
     const [pageSize, setPageSize] = useState<number>(5)
     const [pageNum, setPageNum] = useState<number>(1)
     const [totalItems, setTotalItems] = useState<number>(0)
     const [toalPages, setTotalPages] = useState<number>(0)
     const [sortBy, setSortBy] = useState<string>("default")
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const response = await fetch(`https://localhost:5000/Bookstore?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=${sortBy}`)
+            const categoryParams = selectedCategories
+                .map((cat) => `categories=${encodeURIComponent(cat)}`)
+                .join('&');
+                
+            const response = await fetch(`https://localhost:5000/Bookstore/GetBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=${sortBy}${selectedCategories.length ? `&${categoryParams}` : ''}`)
             const data = await response.json()
             setBooks(data.bookList)
             setTotalItems(data.bookCount)
             setTotalPages(Math.ceil(totalItems / pageSize))
         }
         fetchBooks()
-    }, [pageSize, pageNum, totalItems, sortBy])
+    }, [pageSize, pageNum, totalItems, sortBy, selectedCategories])
 
     return (
         <>
@@ -83,6 +89,7 @@ function Booklist() {
                             </div>
                             <div className="card-footer d-flex justify-content-between align-items-center bg-white border-top">
                                 <span className="fs-5 fw-bold text-success">${b.price}</span>
+                                 <button className="btn btn-dark btn-sm" onClick={() => navigate(`/buy/${b.title}/${b.bookID}/${b.price}`)}>Add to Cart</button>
                             </div>
                         </div>
                     </div>

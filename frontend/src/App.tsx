@@ -1,23 +1,28 @@
-
-import Booklist from './Booklist'
-
-function Header() {
-  return (
-    <nav className="navbar navbar-dark bg-dark px-4 py-3 mb-4 shadow-sm">
-      <span className="navbar-brand fs-4 fw-bold">📚 The Online Bookstore</span>
-    </nav>
-  )
-}
+import './App.css';
+import { CartProvider } from './context/CartContext';
+import CartPage from './pages/CartPage';
+import BuyPage from './pages/BuyPage';
+import StorePage from './pages/StorePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="bg-light min-vh-100">
-      <Header />
-      <div className="container pb-5">
-        <Booklist />
-      </div>
-    </div>
-  )
+    <>
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<StorePage />} />
+            <Route path="/store" element={<StorePage />} />
+            <Route
+              path="/buy/:bookTitle/:bookId/:price"
+              element={<BuyPage />}
+            />
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+        </Router>
+      </CartProvider>
+    </>
+  );
 }
 
-export default App
+export default App;

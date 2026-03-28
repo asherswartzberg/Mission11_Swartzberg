@@ -9,9 +9,9 @@
       "Mission11/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "10.0.3",
-          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.5",
           "Microsoft.EntityFrameworkCore": "10.0.5",
-          "Microsoft.EntityFrameworkCore.Design": "10.0.5"
+          "Microsoft.EntityFrameworkCore.Design": "10.0.5",
+          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.5"
         },
         "runtime": {
           "Mission11.dll": {}

@@ -2,7 +2,7 @@
   {
     "ContainingType": "Mission11.Controllers.BookstoreController",
     "Method": "GetBooks",
-    "RelativePath": "Bookstore",
+    "RelativePath": "Bookstore/GetBooks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -21,30 +21,23 @@
         "Name": "sortBy",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "categories",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": [],
-    "EndpointName": "GetBookstore"
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "Mission11.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "ContainingType": "Mission11.Controllers.BookstoreController",
+    "Method": "GetCategories",
+    "RelativePath": "Bookstore/GetCategories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Mission11.WeatherForecast, Mission11, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]
