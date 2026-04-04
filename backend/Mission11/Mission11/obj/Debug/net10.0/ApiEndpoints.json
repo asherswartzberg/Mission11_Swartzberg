@@ -1,6 +1,38 @@
 [
   {
     "ContainingType": "Mission11.Controllers.BookstoreController",
+    "Method": "AddBook",
+    "RelativePath": "Bookstore/AddBook",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newBook",
+        "Type": "Mission11.Data.Book",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mission11.Controllers.BookstoreController",
+    "Method": "DeleteBook",
+    "RelativePath": "Bookstore/DeleteBook/{bookId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mission11.Controllers.BookstoreController",
     "Method": "GetBooks",
     "RelativePath": "Bookstore/GetBooks",
     "HttpMethod": "GET",
@@ -38,6 +70,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mission11.Controllers.BookstoreController",
+    "Method": "UpdateBook",
+    "RelativePath": "Bookstore/UpdateBook/{bookId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBook",
+        "Type": "Mission11.Data.Book",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

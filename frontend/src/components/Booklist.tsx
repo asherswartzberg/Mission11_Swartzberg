@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react'
 import type { book } from '../types/books'
 import { useNavigate } from 'react-router-dom'
+import { fetchBooks } from '../api/BooksAPI'
 
 function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
     const [books, setBooks] = useState<book[]>([])
     const [pageSize, setPageSize] = useState<number>(5)
     const [pageNum, setPageNum] = useState<number>(1)
     const [totalItems, setTotalItems] = useState<number>(0)
-    const [toalPages, setTotalPages] = useState<number>(0)
+    const [totalPages, setTotalPages] = useState<number>(0)
     const [sortBy, setSortBy] = useState<string>("default")
     const navigate = useNavigate()
 
     useEffect(() => {
-        const fetchBooks = async () => {
-            const categoryParams = selectedCategories
-                .map((cat) => `categories=${encodeURIComponent(cat)}`)
-                .join('&');
-                
-            const response = await fetch(`https://localhost:5000/Bookstore/GetBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=${sortBy}${selectedCategories.length ? `&${categoryParams}` : ''}`)
-            const data = await response.json()
-            setBooks(data.bookList)
-            setTotalItems(data.bookCount)
-            setTotalPages(Math.ceil(totalItems / pageSize))
+        const loadBooks = async () => {
+            const data = await fetchBooks(pageSize, pageNum, sortBy, selectedCategories);
+            setBooks(data.bookList);
+            setTotalItems(data.bookCount);
+            setTotalPages(Math.ceil(data.bookCount / pageSize));
         }
-        fetchBooks()
+        loadBooks();
     }, [pageSize, pageNum, totalItems, sortBy, selectedCategories])
 
     return (
@@ -104,14 +100,14 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
                             &laquo; Previous
                         </button>
                     </li>
-                    {[...Array(toalPages)].map((_, index) => (
+                    {[...Array(totalPages)].map((_, index) => (
                         <li key={index + 1} className={`page-item ${pageNum === index + 1 ? 'active' : ''}`}>
                             <button className="page-link" onClick={() => setPageNum(index + 1)}>
                                 {index + 1}
                             </button>
                         </li>
                     ))}
-                    <li className={`page-item ${pageNum === toalPages ? 'disabled' : ''}`}>
+                    <li className={`page-item ${pageNum === totalPages ? 'disabled' : ''}`}>
                         <button className="page-link" onClick={() => setPageNum(pageNum + 1)}>
                             Next &raquo;
                         </button>

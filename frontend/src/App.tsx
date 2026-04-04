@@ -4,6 +4,7 @@ import CartPage from './pages/CartPage';
 import BuyPage from './pages/BuyPage';
 import StorePage from './pages/StorePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminBooksPage from './pages/AdminBooksPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               element={<BuyPage />}
             />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/adminbooks" element={<AdminBooksPage />} />
           </Routes>
         </Router>
       </CartProvider>

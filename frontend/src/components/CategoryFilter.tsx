@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { fetchCategories } from '../api/BooksAPI';
 
 function CategoryFilter({
   selectedCategories,
@@ -10,16 +11,15 @@ function CategoryFilter({
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const loadCategories = async () => {
       try {
-        const response = await fetch('https://localhost:5000/Bookstore/GetCategories');
-        const data = await response.json();
+        const data = await fetchCategories();
         setCategories(data);
       } catch (error) {
         console.error('Error fetching categories', error);
       }
     };
-    fetchCategories();
+    loadCategories();
   }, []);
 
   function handleCheckboxChange({ target }: { target: HTMLInputElement }) {
